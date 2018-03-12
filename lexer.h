@@ -6,6 +6,6 @@
 
 typedef std::string lexeme;
 
-std::vector<lexeme>&& lex(const std::string& file);
+std::vector<lexeme> lex(const std::string& file);
 
 #endif

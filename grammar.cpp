@@ -5,7 +5,24 @@
 
 grammar::grammar(const std::string& file)
 {
+    std::random_device rd;
+    mt.seed(rd());
+
     parse(lex(file));
+}
+
+const std::vector<std::string>& grammar::get_random_production(const std::string& rule)
+{
+    auto found{rules.find(rule)};
+    if (found == rules.end()) {
+        // TODO: error
+    }
+
+    auto len{found->second.size()};
+
+    std::uniform_int_distribution<int> dist(0, len);
+
+    return found->second.at(dist(mt));
 }
 
 const std::string& grammar::get_start() const

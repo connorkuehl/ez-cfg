@@ -16,10 +16,12 @@ protected:
 
 class production final : public symbol {
 public:
-    production(const std::string& val);
+    production(const std::string& rule);
 
     void generate(grammar& g) override;
     void display() const override;
+private:
+    std::string rule;
 };
 
 class terminal final : public symbol {
@@ -28,6 +30,8 @@ public:
 
     void generate(grammar& g) override;
     void display() const override;
+private:
+    std::string value;
 };
 
 #endif

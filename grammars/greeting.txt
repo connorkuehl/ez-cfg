@@ -1,0 +1,13 @@
+_greeting =  hello _farewell
+          |  salutations _farewell
+          |  hola _farewell
+          |  bonjour _farewell
+          |  how are you today? _farewell
+          |  oh no, _farewell
+          ;
+
+_farewell = farewell
+          | good bye
+          | adios
+          | au revoir
+          ;

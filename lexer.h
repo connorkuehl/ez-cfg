@@ -6,6 +6,14 @@
 
 typedef std::string lexeme;
 
+/**
+ * Lexes the file.
+ *
+ * `file` - the path to the file to lex.
+ *
+ * returns: a collection of every single token/
+ *          lexeme in the file
+ */
 std::vector<lexeme> lex(const std::string& file);
 
-#endif
+#endif // LEXER_H_

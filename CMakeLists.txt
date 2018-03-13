@@ -7,10 +7,12 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(SOURCES
     main.cpp
     lexer.cpp
+    grammar.cpp
 )
 
 set(HEADERS
     lexer.h
+    grammar.h
 )
 
 add_executable(gencfg ${SOURCES} ${HEADERS})

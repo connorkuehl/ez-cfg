@@ -91,7 +91,7 @@ void grammar::parse(const std::vector<lexeme>& tokens)
             case '|':
                 {
                     if (!building) {
-                        // error
+                        // TODO: handle error
                     } else {
                         productions.push_back(production);
                         production.clear();

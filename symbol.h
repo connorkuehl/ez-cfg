@@ -9,6 +9,7 @@
 class symbol {
 public:
     virtual void generate(grammar& g) = 0;
+    virtual void display() const = 0;
 protected:
     std::vector<std::unique_ptr<symbol>> symbols;
 };
@@ -18,6 +19,7 @@ public:
     production(const std::string& val);
 
     void generate(grammar& g) override;
+    void display() const override;
 };
 
 class terminal final : public symbol {
@@ -25,6 +27,7 @@ public:
     terminal(const std::string& val);
 
     void generate(grammar& g) override;
+    void display() const override;
 };
 
 #endif

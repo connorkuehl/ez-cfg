@@ -1,6 +1,5 @@
 #include "grammar.h"
 
-#include <sstream>
 #include <iostream>
 
 grammar::grammar(const std::string& file)
@@ -57,17 +56,29 @@ void grammar::display() const
 
 void grammar::parse(const std::vector<lexeme>& tokens)
 {
+    // TODO: this method needs to be improved. Badly.
+    // A finite state machine might make this cleaner
+    // and make it easier to handle errors.
     start = tokens.at(0);
 
+    // This is the current rule that we are building.
     std::string curr_token;
+    // This is the total overall list of productions
+    // that this rule is capable of generating.
     std::vector<std::vector<std::string>> productions;
+    // A production is a list of symbols (terminals &
+    // nonterminals).
     std::vector<std::string> production;
-    std::stringstream sentence;
+    // Flag to determine if we are building a production
+    // or not. This affects parser behavior when we find
+    // a production symbol. If we are building then we
+    // don't want to get distracted and evaluate the symbol.
     auto building{false};
 
     for (const auto& token : tokens) {
         switch (token.at(0))
         {
+            // Production symbol
             case '_': 
                 {
                     // not currently building a production rule,
@@ -88,6 +99,7 @@ void grammar::parse(const std::vector<lexeme>& tokens)
                 break;
             case '=':
                 break;
+                // Production clause separator
             case '|':
                 {
                     if (!building) {
@@ -98,6 +110,7 @@ void grammar::parse(const std::vector<lexeme>& tokens)
                     }
                 }
                 break;
+                // Production rule terminator
             case ';': 
                 {
                     productions.push_back(production);
@@ -105,6 +118,7 @@ void grammar::parse(const std::vector<lexeme>& tokens)
                     building = false;
                 }
                 break;
+                // Terminal
             default:
                 production.push_back(token);
                 break;

@@ -20,7 +20,7 @@ const std::vector<std::string>& grammar::get_random_production(const std::string
 
     auto len{found->second.size()};
 
-    std::uniform_int_distribution<int> dist(0, len);
+    std::uniform_int_distribution<int> dist(0, len - 1);
 
     return found->second.at(dist(mt));
 }

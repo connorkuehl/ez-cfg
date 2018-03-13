@@ -8,11 +8,13 @@ set(SOURCES
     main.cpp
     lexer.cpp
     grammar.cpp
+    symbol.cpp
 )
 
 set(HEADERS
     lexer.h
     grammar.h
+    symbol.h
 )
 
 add_executable(gencfg ${SOURCES} ${HEADERS})

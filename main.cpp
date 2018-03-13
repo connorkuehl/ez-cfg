@@ -1,4 +1,5 @@
 #include "grammar.h"
+#include "symbol.h"
 
 #include <iostream>
 
@@ -10,7 +11,9 @@ int main(int argc, char* argv[])
     }
 
     grammar g(argv[1]);
+    production p(g.get_start());
 
-    g.display();
+    p.generate(g);
+    p.display();
     return 0;
 }

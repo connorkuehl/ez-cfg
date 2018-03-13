@@ -11,6 +11,8 @@ class grammar final {
 public:
     grammar(const std::string& file);
 
+    bool is_terminal(const std::string& value) const;
+    bool is_nonterminal(const std::string& value) const;
     void display() const;
 private:
     std::string start;

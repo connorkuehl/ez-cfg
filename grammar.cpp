@@ -8,6 +8,16 @@ grammar::grammar(const std::string& file)
     parse(lex(file));
 }
 
+bool grammar::is_terminal(const std::string& value) const
+{
+    return !is_nonterminal(value);
+}
+
+bool grammar::is_nonterminal(const std::string& value) const
+{
+    return value.at(0) == '_';
+}
+
 void grammar::display() const
 {
     for (const auto& rule : rules) {
